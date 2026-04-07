@@ -71,11 +71,11 @@ def analyze_institutional(symbol_key):
     fvg_up = df_m5['High'].iloc[-3] < df_m5['Low'].iloc[-1]
 
     # BUY Logic
-    if curr_price > ema200_m5 and rsi_m1 < 35 and fvg_up:
+    if curr_price > ema200_m5 and rsi_m1 < 30 and fvg_up:
         return {'action': 'BUY 🚀', 'tp': 10.0 if "GC=F" in symbol_key else 0.0010, 'sl': 3.0 if "GC=F" in symbol_key else 0.0003, 'reason': 'Institutional FVG + M1 Oversold'}
     
     # SELL Logic
-    elif curr_price < ema200_m5 and rsi_m1 > 65 and fvg_down:
+    elif curr_price < ema200_m5 and rsi_m1 > 70 and fvg_down:
         return {'action': 'SELL 🔻', 'tp': 10.0 if "GC=F" in symbol_key else 0.0010, 'sl': 3.0 if "GC=F" in symbol_key else 0.0003, 'reason': 'Institutional FVG + M1 Overbought'}
     return None
 
